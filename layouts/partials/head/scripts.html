@@ -1,0 +1,13 @@
+{{- with resources.Get "scripts/index.ts" }}
+  {{- $opts := dict "format" "esm" }}
+  {{- if eq hugo.Environment "development" }}
+    {{- with . | js.Build }}
+      <script type="module" src="{{ .RelPermalink }}"></script>
+    {{- end }}
+  {{- else }}
+    {{- $opts = merge (dict "minify" true) $opts }}
+    {{- with . | js.Build $opts | fingerprint | resources.PostProcess }}
+      <script type="module" src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end }}
+  {{- end }}
+{{- end }}

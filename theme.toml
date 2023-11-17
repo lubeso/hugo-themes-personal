@@ -1,0 +1,20 @@
+# even
+name = 'Personal Hugo theme'
+license = 'MIT'
+licenselink = 'https://github.com/lubeso/hugo-themes-personal/LICENSE'
+description = 'Personal Hugo theme'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/lubeso/hugo-themes-personal'
+
+# If you have a running demo of the theme
+demosite = 'https://lubeso.dev/'
+
+# Taxonomy terms
+tags = []
+features = []
+
+# If the theme has a single author
+[author]
+  name = 'Luis Becerra Solis'
+  homepage = 'https://lubeso.dev/'

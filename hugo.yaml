@@ -1,0 +1,14 @@
+baseURL: https://example.org
+languageCode: en-US
+title: Untitled
+
+menu:
+  main:
+    - name: Home
+      pageRef: /
+      weight: 10
+
+module:
+  hugoVersion:
+    min: v0.119.0
+    extended: false

@@ -1,0 +1,52 @@
+{{- /*
+  Renders a menu for the given menu ID.
+  
+  @context {page} page The current page.
+  @context {string} menuID The menu ID.
+  
+  @example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+  */}}
+  
+  {{- $page := .page }}
+  {{- $menuID := .menuID }}
+  
+  {{- with index site.Menus $menuID }}
+    <nav class="p-2 w-full min-h-fit">
+      <ul class="w-full flex flex-row flex-wrap justify-between items-center text-4xl space-x-4 space-y-4">
+        {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+      </ul>
+    </nav>
+  {{- end }}
+  
+  {{- define "partials/inline/menu/walk.html" }}
+    {{- $page := .page }}
+    {{- range .menuEntries }}
+      {{- $attrs := dict "href" .URL }}
+      {{- if $page.IsMenuCurrent .Menu . }}
+        {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+      {{- else if $page.HasMenuCurrent .Menu .}}
+        {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
+      {{- end }}
+      {{- $name := .Name }}
+      {{- with .Identifier }}
+        {{- with T . }}
+          {{- $name = . }}
+        {{- end }}
+      {{- end }}
+      <li class="flex-1 min-w-fit min-h-fit font-bold text-center">
+        <a
+          {{- range $k, $v := $attrs }}
+            {{- with $v }}
+              {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+            {{- end }}
+          {{- end -}}
+        >{{ $name }}</a>
+        {{- with .Children }}
+          <ul class="w-full flex flex-row flex-wrap justify-between items-center text-2xl space-x-2 space-y-2">
+            {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+          </ul>
+        {{- end }}
+      </li>
+    {{- end }}
+  {{- end }}
+  
