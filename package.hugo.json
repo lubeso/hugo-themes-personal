@@ -1,0 +1,16 @@
+{
+  "private": "true",
+  "name": "@lubeso/hugo-themes-personal",
+  "author": "Luis Becerra Solis <lubeso@icloud.com>",
+  "description": "Personal Hugo theme.",
+  "keywords": [],
+  "version": "0.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.5"
+  },
+  "packageManager": "pnpm@8.10.5"
+}
