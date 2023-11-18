@@ -1,0 +1,26 @@
+{
+  "author": "Luis Becerra Solis <lubeso@icloud.com>",
+  "comments": {
+    "dependencies": {},
+    "devDependencies": {
+      "autoprefixer": "project",
+      "postcss": "project",
+      "postcss-cli": "project",
+      "tailwindcss": "project"
+    }
+  },
+  "dependencies": {},
+  "description": "Personal Hugo theme.",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.5"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "name": "@lubeso/hugo-themes-personal",
+  "packageManager": "pnpm@8.10.5",
+  "private": "true",
+  "version": "0.0.0"
+}
