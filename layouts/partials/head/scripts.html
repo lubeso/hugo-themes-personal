@@ -1,7 +1,7 @@
 {{- with resources.Get "scripts/index.ts" }}
   {{- $opts := dict "format" "esm" }}
   {{- if eq hugo.Environment "development" }}
-    {{- with . | js.Build }}
+    {{- with . | js.Build $opts }}
       <script type="module" src="{{ .RelPermalink }}"></script>
     {{- end }}
   {{- else }}
