@@ -12,7 +12,7 @@ Renders a menu for the given menu ID.
 
 {{- with index site.Menus $menuID }}
   <nav class="p-2 w-full min-h-fit">
-    <ul class="w-full flex flex-row flex-wrap justify-between items-center text-4xl space-x-4 space-y-4">
+    <ul class="w-full flex flex-row flex-wrap justify-between items-center text-4xl">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
     </ul>
   </nav>
@@ -42,7 +42,7 @@ Renders a menu for the given menu ID.
         {{- end -}}
       >{{ $name }}</a>
       {{- with .Children }}
-        <ul class="w-full flex flex-row flex-wrap justify-between items-center text-2xl space-x-2 space-y-2">
+        <ul class="w-full flex flex-row flex-wrap justify-between items-center text-2xl">
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
         </ul>
       {{- end }}
