@@ -10,5 +10,19 @@
   {{- end -}}
 
   {{ .Content }}
+  {{- with resources.Get (printf "scripts/letters/%s/index.ts" .File.ContentBaseName) }}
+    {{- $opts := dict "format" "esm" }}
+    {{- if eq hugo.Environment "development" }}
+      {{- with . | js.Build $opts }}
+        <script type="module" src="{{ .RelPermalink }}"></script>
+      {{- end }}
+    {{- else }}
+      {{- $opts = merge (dict "minify" true) $opts }}
+      {{- with . | js.Build $opts | fingerprint | resources.PostProcess }}
+        <script type="module" src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+      {{- end }}
+    {{- end }}
+  {{- end }}
+
   {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 {{ end }}
