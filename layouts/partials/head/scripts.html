@@ -1,4 +1,4 @@
-{{- with resources.Get "scripts/index.ts" }}
+{{- with resources.Get "/scripts/index.ts" }}
   {{- $opts := dict "format" "esm" }}
   {{- if eq hugo.Environment "development" }}
     {{- with . | js.Build $opts }}

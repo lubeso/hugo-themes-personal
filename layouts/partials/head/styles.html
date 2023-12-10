@@ -1,4 +1,4 @@
-{{- with resources.Get "styles/index.css" | postCSS }}
+{{- with resources.Get "/styles/index.css" | postCSS }}
   {{- if eq hugo.Environment "development" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" />
   {{- else }}
